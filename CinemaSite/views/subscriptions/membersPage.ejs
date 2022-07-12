@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <% include ../partials/logOutBtn.ejs %>
+  <body>
+    <header>
+      <% include ../partials/subscriptionMain.ejs %>
+      <form method="get">
+        <p>
+          <input
+            type="submit"
+            value="Get all members"
+            formaction="/main/subscriptionsManage/membersPage"
+            style="background-color: rgb(176, 176, 26)"
+          />
+          <% if(createSubPerm){%>
+          <input
+            type="submit"
+            value="Add member"
+            formaction="/main/subscriptionsManage/memberAdd"
+          />
+          <%}%>
+        </p>
+      </form>
+    </header>
+    <main>
+      <% subscriptions.forEach((sub, index)=>{ %>
+      <div style="border: 3px solid black; padding: 20px; margin: 10px">
+        <h3><%= sub.name %></h3>
+        Email: <%= sub.email %><br />
+        City: <%= sub.city %><br />
+        <form>
+          <input
+            type="hidden"
+            value="<%= sub.id %>"
+            class="memberId_<%= index %>"
+            name="id"
+          />
+          <% if(updateSubPerm) {%>
+          <input
+            type="submit"
+            value="Edit"
+            name="Edit"
+            formmethod="get"
+            formaction="/main/subscriptionsManage/membersPage/memberEdit/<%= sub.name %>"
+          />
+          <%}%> <% if(deleteSubPerm){%>
+          <input
+            type="submit"
+            value="Delete"
+            name="Delete"
+            formmethod="post"
+            formaction="/main/subscriptionsManage/membersPage"
+          />
+          <%}%>
+        </form>
+        <div
+          style="
+            border: 3px solid black;
+            padding: 20px;
+            margin: 10px;
+            text-align: left;
+            border-right: -40px;
+            border-top: -20px;
+          "
+        >
+          <h4>Movies Watched</h4>
+          <% if (SubMovieSubPerm){%>
+          <input
+            type="submit"
+            value="Subscribe to new movie"
+            name="newMovie"
+            class="subscribeNewMovie subscribeNewMovie_<%= index %>"
+          /><br />
+          <%}%>
+          <div
+            style="border: 3px solid red"
+            class="divSubscribe_<%= index %> hidden"
+          >
+            <form>
+              <select id="name" class="select-movie_<%= index%>">
+                <% sub.moviesNotWatched.forEach(movie => { %> Add a new movie<br />
+                <option value="<%= movie.id %>"><%= movie.name %></option>
+                <% }) %></select
+              ><br />
+
+              <input
+                type="date"
+                name="date"
+                class="movieDate_<%= index %>"
+                required
+              /><br />
+              <input
+                type="submit"
+                name="Subscribe"
+                class="subscribe_<%= index %>"
+                value="Subscribe"
+              />
+            </form>
+          </div>
+          <div class="mydiv_<%= index %>" data-test="<%= sub.movies %>">
+            <ul class="movieList_<%=index%>">
+              <% sub.moviesWatched?.forEach(mov => {%>
+              <li class="movies_<%= index %>">
+                <a
+                  href="/main/moviesManage/moviesPage?name=<%=mov.name %>"
+                  data-value="<%=mov.name%>"
+                  ><%= mov.name %></a
+                >, <rb data-value="<%=mov.date%>"><%= mov.date %></rb>
+                <input
+                  type="text"
+                  value="<%= mov.id %>"
+                  class="id"
+                  name="id"
+                  hidden
+                />
+              </li>
+              <% }) %>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <% }) %>
+    </main>
+    <script src="/javascripts/subscriptionsPageScript.js"></script>
+  </body>
+</html>

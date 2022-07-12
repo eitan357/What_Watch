@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <% include ../partials/logOutBtn.ejs %>
+  <body>
+    <% include ../partials/userMain.ejs %>
+    <form method="get">
+      <p>
+        <input
+          type="submit"
+          value="Get all users"
+          style="background-color: rgb(176, 176, 26)"
+          formaction="/main/usersManage/usersPage"
+        />
+        <input
+          type="submit"
+          value="Add User"
+          formaction="/main/usersManage/userAdd"
+        />
+      </p>
+    </form>
+
+    <% users.forEach(user=> {%>
+    <form method="get">
+      <p>
+        Name: <%= user.fullName %><br />
+        User Name: <%= user.userName %><br />
+        Session Time Out: <%= user.sessionTimeOut %><br />
+        Created Date: <%= user.createdDateClient %><br />
+        Permissions: <%= user.permissions %><br />
+        <input type="text" name="id" value="<%= user.id %>" hidden />
+        <input
+          type="submit"
+          value="Edit"
+          formaction="/main/usersManage/usersPage/userEdit/<%= user.id %>"
+        />
+        <% if(user.userName === "Admin") { %>
+        <input type="button" value="Delete" disabled />
+        <%} else {%>
+        <input
+          type="submit"
+          value="Delete"
+          name="Delete"
+          formmethod="post"
+          formaction="/main/usersManage/usersPage"
+        />
+        <%}%>
+      </p>
+    </form>
+    <% }) %>
+  </body>
+</html>

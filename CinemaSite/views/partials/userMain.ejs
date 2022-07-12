@@ -1,0 +1,22 @@
+<nav>
+  <form action="/main" method="post">
+    <a href="/main/moviesManage/moviesPage"
+      ><input type="button" value="Movies"
+    /></a>
+
+    <a href="/main/subscriptionsManage/membersPage"
+      ><input type="button" value="subscriptions"
+    /></a>
+
+    <a href="/main/usersManage/usersPage">
+      <% if(admin){%>
+      <input
+        type="button"
+        value="Users Management"
+        name="userManagement"
+        style="background-color: rgb(176, 176, 26)"
+      />
+      <% } else { %> <% } %>
+    </a>
+  </form>
+</nav>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <% include ../partials/logOutBtn.ejs %>
+  <body>
+    <% include ../partials/subscriptionMain.ejs %>
+
+    <form action="/main/subscriptionsManage/membersPage">
+      First name:<input type="text" name="firstName" /><br />
+      Last name:<input type="text" name="lastName" /><br />
+      Email:<input type="text" name="email" /><br />
+      City:<input type="text" name="city" /><br />
+      <input type="submit" name="Save" value="Save" formmethod="post" />
+      <input type="submit" name="Cancel" value="Cancel" formmethod="get" />
+    </form>
+  </body>
+</html>

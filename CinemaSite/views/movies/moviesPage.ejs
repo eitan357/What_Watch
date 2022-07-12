@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <% include ../partials/logOutBtn.ejs %>
+  <body>
+    <% include ../partials/movieMain.ejs %>
+    <form method="get">
+      <p>
+        <input
+          type="submit"
+          value="Get all movies"
+          formaction="/main/moviesManage/moviesPage"
+          style="background-color: rgb(176, 176, 26)"
+        />
+        <% if(createMoviesPerm){ %>
+        <input
+          type="submit"
+          value="Add movie"
+          formaction="/main/moviesManage/movieAdd"
+        />
+        <% }%>
+      </p>
+    </form>
+
+    <div class="search">
+      <form class="form" method="get">
+        <datalist id="name">
+          <% allMoviesNames.forEach(movie => { %>
+          <option name="search" placeholder="Search.." value="<%=movie.name %>">
+            <%= movie.genres %>
+          </option>
+          <input type="text" value="<%=movie.id%>" class="findId" />
+          <% }) %>
+        </datalist>
+        <input list="name" value=" " placeholder="Search.." id="select-movie" />
+        <input type="submit" value="Search" class="searchBtn" />
+      </form>
+    </div>
+    <br />
+
+    <% movies.forEach(movie => {%>
+    <div style="overflow: hidden; border: solid 2px black">
+      <b><%= movie.name %>, <%= movie.premiered %></b><br />
+      genres: <%= movie.genres %><br />
+      <img
+        src=" <%= movie.image %>"
+        alt="Movie's image"
+        style="width: 10%; float: left; border: solid 2px black"
+      />
+      <div
+        style="
+          float: left;
+          margin-left: 2%;
+          padding-bottom: 10%;
+          padding-right: 10%;
+          margin-bottom: -10%;
+          border: solid 2px black;
+        "
+      >
+        <ul style="list-style-type: none">
+          <b>Subscriptions watched:</b>
+          <% movie.members.forEach(member=> { %>
+          <li>
+            <a
+              href="/main/subscriptionsManage/membersPage?name=<%=member.name %>"
+              ><%= member.name %></a
+            >, <%= member.watchDate %>
+          </li>
+          <% }) %>
+        </ul>
+      </div>
+      <div style="padding-top: 20%">
+        <form>
+          <input type="text" value="<%= movie.id %>" name="id" hidden />
+          <input type="text" value="<%= movie.name %>" name="name" hidden />
+          <% if (updateMoviesPerm){ %>
+          <input
+            type="submit"
+            value="Edit"
+            name="Edit"
+            formaction="/main/moviesManage/moviesPage/movieEdit/<%=movie.name %>"
+            formmethod="get"
+          />
+          <% } %> <% if(deleteMoviesPerm){%>
+          <input
+            type="submit"
+            value="Delete"
+            name="Delete"
+            formaction="/main/moviesManage/moviesPage"
+            formmethod="post"
+          />
+          <%}%>
+        </form>
+      </div>
+    </div>
+    <br />
+    <% }) %>
+    <script src="/javascripts/moviesPageScript.js"></script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <% include ../partials/logOutBtn.ejs %>
+  <body>
+    <% include ../partials/userMain.ejs %>
+
+    <h3>Add new user:</h3>
+    <form method="post" action="/main/usersManage/usersPage">
+      First Name:
+      <input type="text" name="firstName" required /><br />
+      Last Name:
+      <input type="text" name="lastName" required /><br />
+      User Name:
+      <input type="text" name="userName" required /><br />
+      Session time out(Minutes):
+      <input type="number" name="sessionTimeOut" /><br />
+      Created date:<input
+        type="text"
+        name="createdDate"
+        value="<%= createdDate %>"
+        hidden
+      /><input
+        type="text"
+        name="createdDateClient"
+        value="<%= createdDateClient %>"
+        disabled
+      />
+      <br />
+      Permissions:<br />
+      <% permissions.forEach((value)=>{%>
+      <input type="checkbox" name="permissions" value="<%= value %>" />
+      <%= value %><br />
+      <%})%>
+      <input type="submit" value="Save" name="Create" />
+      <a href="/main/usersManage/usersPage">
+        <input type="button" value="Cancel" name="Cancel"
+      /></a>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<nav>
+  <form action="/main" method="post">
+    <% if(viewMoviesPerm){%>
+    <a href="/main/moviesManage/moviesPage"
+      ><input type="button" value="Movies"
+    /></a>
+    <%}else{%>
+    <input type="button" value="Movies" disabled />
+    <%}%> <%if(viewSubPerm){%>
+    <a href="/main/subscriptionsManage/membersPage"
+      ><input
+        type="button"
+        value="subscriptions"
+        style="background-color: rgb(176, 176, 26)"
+    /></a>
+    <%} else {%>
+    <input type="button" value="subscriptions" disabled />
+    <%}%>
+    <a href="/main/usersManage/usersPage">
+      <% if(admin){%>
+      <input type="button" value="Users Management" name="userManagement" />
+      <% } else { %> <% } %>
+    </a>
+  </form>
+</nav>

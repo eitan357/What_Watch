@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <% include ../partials/logOutBtn.ejs %>
+  <body>
+    <% include ../partials/movieMain.ejs %> <% movie.forEach(movie=>{%>
+    <div
+      style="
+        position: absolute;
+        left: 20px;
+        margin-top: 10px;
+        border-color: black;
+      "
+    >
+      <form>
+        <input type="text" name="id" value="<%= movie.id %>" hidden />
+        Name:
+        <input
+          type="text"
+          name="name"
+          value="<%= movie.name %>"
+          required
+        /><br />
+        Premiered:
+        <input
+          type="date"
+          name="premiered"
+          value="<%= movie.premiered %>"
+          required
+        /><br />
+        Image URL:
+        <input type="text" name="image" value="<%= movie.image %>" /><br />
+        Genres:<br />
+        <% orderGenres.forEach(([key, value])=>{if(key==='checked'){%>
+        <input
+          type="checkbox"
+          name="genres"
+          value="<%= value == null|| value == `` ? `Undefined` : value %>"
+          checked
+        />
+        <%}else{%>
+        <input
+          type="checkbox"
+          name="genres"
+          value="<%= value == null|| value == `` ? `Undefined` : value %>"
+        />
+        <%}%> <%= value == null|| value == `` ? `Undefined` : value %><br />
+        <%})%>
+        <input type="text" name="genres" placeholder="add genre" /><br />
+        <br /><input
+          type="submit"
+          value="Update"
+          name="Update"
+          formaction="/main/moviesManage/moviesPage"
+          formmethod="post"
+        />
+        <a href="/main/moviesManage/moviesPage"
+          ><input type="button" value="Cancel" name="Cancel"
+        /></a>
+      </form>
+    </div>
+    <% }) %>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <% include ../partials/logOutBtn.ejs %>
+  <body>
+    <% include ../partials/movieMain.ejs %>
+    <div
+      style="
+        position: absolute;
+        left: 20px;
+        margin-top: 10px;
+        border-color: black;
+      "
+    >
+      <form>
+        Name: <input type="text" name="name" /><br />
+        Premiered: <input type="date" name="premiered" /><br />
+        Image URL: <input type="text" name="image" /><br />
+        Genres:<br />
+        <% genres.forEach(genre => { %>
+        <input
+          type="checkbox"
+          name="genres"
+          value="<%= genre==null||genre==`` ? 'Undefined'  : genre %>"
+        /><%= genre == null|| genre == `` ? `Undefined` : genre %><br />
+        <% }) %>
+        <input type="text" name="genres" placeholder="add genre" /><br />
+        <br /><input
+          type="submit"
+          value="Save"
+          name="Save"
+          formaction="/main/moviesManage/moviesPage"
+          formmethod="post"
+        />
+        <input
+          type="submit"
+          value="Cancel"
+          name="Cancel"
+          formaction="/main/moviesManage/moviesPage"
+          formmethod="get"
+        />
+      </form>
+    </div>
+  </body>
+</html>

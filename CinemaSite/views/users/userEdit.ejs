@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <% include ../partials/logOutBtn.ejs %>
+  <body>
+    <% include ../partials/userMain.ejs %>
+
+    <h3>Edit user: <%= user.fullName %></h3>
+    <form method="post" action="/main/usersManage/usersPage">
+      <input type="text" name="id" value="<%= user.id %>" hidden />
+      First Name:
+      <input
+        type="text"
+        name="firstName"
+        value="<%= user.firstName %>"
+        required
+      /><br />
+      Last Name:
+      <input
+        type="text"
+        name="lastName"
+        value="<%= user.lastName %>"
+        required
+      /><br />
+      User Name:
+      <input
+        type="text"
+        name="userName"
+        value="<%= user.userName %>"
+        required
+      /><br />
+      Session time out(Minutes):
+      <input
+        type="number"
+        name="sessionTimeOut"
+        value="<%= user.sessionTimeOut %>"
+      /><br />
+      Created date:<input
+        type="text"
+        name="createdDate"
+        value="<%= user.createdDate %>"
+        hidden
+      /><input
+        type="text"
+        name="createdDateClient"
+        value="<%= user.createdDateClient %>"
+        disabled
+      /><br />
+      Permissions:<br />
+      <% permissions.forEach(([key, value])=>{if(key==='checked'){%>
+      <input type="checkbox" name="permissions" value="<%= value %>" checked />
+      <%}else{%>
+      <input type="checkbox" name="permissions" value="<%= value %>" />
+      <%}%> <%= value %><br />
+      <%})%>
+      <input type="submit" value="Update" name="Update" />
+      <a href="/main/usersManage/usersPage"
+        ><input type="button" value="Cancel" name="Cancel"
+      /></a>
+    </form>
+  </body>
+</html>
