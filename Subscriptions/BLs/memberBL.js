@@ -77,6 +77,7 @@ const membersFromWs = (async function () {
   } else {
     const data = await membersWsDAL.readMembers();
     const members = data.data;
+    console.log(members);
     members.forEach((member) => {
       let obj = {
         name: member.name,
