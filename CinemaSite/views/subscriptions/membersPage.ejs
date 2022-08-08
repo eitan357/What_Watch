@@ -99,7 +99,7 @@
             </form>
           </div>
           <div class="mydiv_<%= index %>" data-test="<%= sub.movies %>">
-            <ul class="movieList_<%=index%>">
+            <ul class="movieList_<%= index %>">
               <% sub.moviesWatched?.forEach(mov => {%>
               <li class="movies_<%= index %>">
                 <a
@@ -109,10 +109,10 @@
                 >, <rb data-value="<%=mov.date%>"><%= mov.date %></rb>
                 <input
                   type="text"
-                  value="<%= mov.id %>"
                   class="id"
                   name="id"
                   hidden
+                  value="<%= mov.id %>"
                 />
               </li>
               <% }) %>

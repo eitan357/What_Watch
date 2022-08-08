@@ -1,4 +1,3 @@
-const form = document.querySelector(".form");
 const searchBtn = document.querySelector(".searchBtn");
 const selectMovie = document.querySelector("#select-movie");
 

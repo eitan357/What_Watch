@@ -19,27 +19,23 @@ subscribeNewMovieIndex.forEach((value, index) => {
     subscribeWindow.classList.toggle("hidden");
   });
 
-  //send new movie to the list
-  subscribe.addEventListener("click", async function (e) {
+  //add new movie to the list
+  subscribe.addEventListener("click", function (e) {
     e.preventDefault();
     let data = { movies: [] };
 
-    //new movie
+    //get new movie
     let movieName = selectMovie.options[selectMovie.selectedIndex].textContent;
     let movieId = selectMovie.options[selectMovie.selectedIndex].value;
     let date = new Date(movieDate.value);
-    if (date === "" || movieName == "")
+    if (movieDate.value === "" || movieName == "")
       return alert("One of the fields is empty (movie name or date)");
     let clientDate = `${String(date.getDate()).padStart("0")}/${String(
       date.getMonth() + 1
     ).padStart("0")}/${date.getFullYear()}`;
     data.movies.push({ movieId, date: date });
 
-    //update movieNotWatch List
-    movieDate.value = "";
-    selectMovie.options[selectMovie.selectedIndex].textContent = undefined;
-
-    //old movies
+    //get old movies
     movieList.childNodes.forEach((li) => {
       if (li.classList) {
         let id = li.querySelector(".id").value;
@@ -52,20 +48,21 @@ subscribeNewMovieIndex.forEach((value, index) => {
       }
     });
 
-    // update database
-    await fetch(`http://localhost:8000/api/subscriptions/${memberId}`, {
-      method: "PUT",
-      body: JSON.stringify(data),
-      headers: { "Content-Type": "application/json" },
-    });
+    //update movieNotWatch List
+    movieDate.value = "";
+    selectMovie.options[selectMovie.selectedIndex].textContent = undefined;
 
     //update html
     const newMovie = document.createElement("li");
     newMovie.classList.add(`moives_${index}`);
-    newMovie.innerHTML = `
-    <a href="http://localhost:3000/main/moviesManage/moviesPage?name=${movieName} data-value="${movieName}">${movieName}</a>, <rb data-value="${clientDate}">${clientDate}</rb>
-    <input type="text" value="${movieId} class="id" name="id" hidden />
-    `;
+    newMovie.innerHTML = `<a href="http://localhost:3000/main/moviesManage/moviesPage?name=${movieName}" data-value="${movieName}">${movieName}</a>, <rb data-value="${clientDate}">${clientDate}</rb> <input type="text" class="id" name="id" hidden value="${movieId}"/>`;
     movieList.appendChild(newMovie);
+
+    //update database
+    fetch(`http://localhost:8000/api/subscriptions/${memberId}`, {
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" },
+    });
   });
 });

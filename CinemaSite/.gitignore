@@ -1,3 +1,2 @@
-node_modules
-Data/permissions.json
-Data/users.json
+/Data
+/node_modules
