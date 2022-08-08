@@ -28,9 +28,12 @@ There are three parts to this application:
      In the files you can also see that there is a withdrawal of information (by axios) from an      API in the WEB that brings the initial information found within the application.
      
 3. Database - Used by local MongoDB with Studio 3T.
+   
    Inside the database you can find two different folders.
+   
    One has a collection of the users who log into the application.
-    In the second there are three collections.
+   
+   In the second there are three collections.
     One for the series,
     the second for the viewers,
     and the third to keep the time when a viewer saw a certain movie.
