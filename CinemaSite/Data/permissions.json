@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"users":[{"id":"62a0f00feeb779722a1177ec","permissions":["View Subscriptions","Create Subscriptions","View Movies","Create Movies","Delete Movies"]},{"id":"62a5f189eaeaad270dac4c03","permissions":["View Subscriptions","Create Subscriptions","Delete Subscriptions","Update Subscriptions","SubMovie Subscriptions","View Movies","Create Movies","Delete Movies","Update Movies"]},{"id":"62c35b65f506237629dcc9b4","permissions":["View Subscriptions"]},{"id":"62cb37fd2fbfc644298fb422","permissions":["View Subscriptions"]},{"id":"62cc7f00db5f9bb9e3e7309a","permissions":["View Subscriptions","View Movies"]},{"id":"62e3bd0ecc92059c588867d4","permissions":["View Subscriptions","Create Subscriptions","Delete Subscriptions","Update Subscriptions","SubMovie Subscriptions","View Movies","Create Movies","Delete Movies","Update Movies"]}]}
+=======
+"User permission information"
+>>>>>>> 724f75fa180ef53e1a7092495ec78d5bca6757dd

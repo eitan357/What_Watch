@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"allUsers":[{"id":"62a0f00feeb779722a1177ec","firstName":"David","lastName":"Monsa","createdDate":"Mon Jul 11 2022 22:50:02 GMT+0300 (Eastern European Summer Time)","sessionTimeOut":11},{"id":"62a5f189eaeaad270dac4c03","firstName":"Admin","lastName":"","createdDate":"Mon Jul 04 2022 23:49:02 GMT+0300 (Eastern European Summer Time)","sessionTimeOut":60},{"id":"62c35b65f506237629dcc9b4","firstName":"Sharon","lastName":"Adir","createdDate":"Sun Jul 10 2022 23:42:47 GMT+0300 (Eastern European Summer Time)","sessionTimeOut":12},{"id":"62cb37fd2fbfc644298fb422","firstName":"Or","lastName":"Tal","createdDate":"Sun Jul 10 2022 23:35:09 GMT+0300 (Eastern European Summer Time)","sessionTimeOut":3},{"id":"62cc7f00db5f9bb9e3e7309a","firstName":"Dvir","lastName":"Gotliv","createdDate":"Mon Jul 11 2022 22:50:24 GMT+0300 (Eastern European Summer Time)","sessionTimeOut":23},{"id":"62e3bd0ecc92059c588867d4","firstName":"Shahar","lastName":"Monsa","createdDate":"Fri Jul 29 2022 13:57:18 GMT+0300 (Eastern European Summer Time)","sessionTimeOut":60}]}
+=======
+"User information"
+>>>>>>> 724f75fa180ef53e1a7092495ec78d5bca6757dd
