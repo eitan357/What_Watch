@@ -1,4 +1,6 @@
 # What_Watch
+Node project
+
 This application is a demo application for searching series, it is built using Node and a several types of information sources.
 
 When entering the application, you need to enter a username and password.
